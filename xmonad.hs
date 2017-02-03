@@ -13,22 +13,23 @@ myTerminal = "urxvtc"
 myBorderWidth = 2
 myBorderColor = "#4d4d4d"
 --myBorderColor = "#8f8f8f"
-myActiveBorderColor = "#dfaf8f"
-myWorkspaces = ["1:main","2:debug","3:browser","4:communication","5:calibre","6:extra"]
+--myActiveBorderColor = "#dfaf8f"
+myActiveBorderColor = "#dcdcdc"
+myWorkspaces = ["1:main","2:additional","3:ssh","4:browser","5:calibre","6:communication"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
-    tiled = spacing 4 $ Tall nmaster delta ratio
+    tiled = spacing 2 $ Tall nmaster delta ratio
     nmaster = 1
     ratio = 1/2
-    delta = 10/100
+    delta = 5/100
     noBordersLayout = smartBorders $ Full
 myManageHook = composeAll
-  [ className =? "Firefox" --> doShift "3:browser"
-  , className =? "Thunderbird" --> doShift "4:communication"
+  [ className =? "Firefox" --> doShift "4:browser"
+  , className =? "Thunderbird" --> doShift "6:communication"
   , className =? "calibre" --> doShift "5:calibre"
---, className =? "VirtualBox" --> doFloat
---, className =? "Skype" --> doFloat
---, className =? "Upwork" --> doFloat
+  , className =? "VirtualBox" --> doShift "5:calibre"
+  , className =? "Skype" --> doShift "6:communication"
+  , className =? "Upwork" --> doShift "6:communication"
   ]
 
 main = do
@@ -54,7 +55,7 @@ main = do
     , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
     , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-")
     , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+")
-    , ((0, xF86XK_PowerOff), spawn "xscreensaver-command -lock && echo 'mem' > /sys/power/state")
+    , ((0, xF86XK_PowerOff), spawn "xscreensaver-command -lock && acpitool -s")
     , ((mod1Mask .|. shiftMask, xK_q), return())
     , ((mod1Mask, xK_q), return())
     , ((mod1Mask, xK_F1), sendMessage ToggleStruts)
