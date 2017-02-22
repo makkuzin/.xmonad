@@ -10,11 +10,11 @@ import XMonad.Util.EZConfig
 import Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "urxvtc"
-myBorderWidth = 2
+myBorderWidth = 3
 myBorderColor = "#4d4d4d"
 --myBorderColor = "#8f8f8f"
 --myActiveBorderColor = "#dfaf8f"
-myActiveBorderColor = "#dcdcdc"
+myActiveBorderColor = "#806dbd"
 myWorkspaces = ["1:main","2:additional","3:ssh","4:browser","5:calibre","6:communication"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where

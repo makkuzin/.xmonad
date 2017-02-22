@@ -6,8 +6,7 @@ Config
   , commands = [ Run Kbd [ ("us", "<fc=#ffffff>EN</fc>")
 		         , ("ru", "<fc=#ffffff>RU</fc>")
 			 ]
-	       , Run Wireless "wlp2s0" [ "--template", "WiFi: <essid> <quality>%"
-	                               ] 10
+	       , Run Wireless "wlan0" [ "--template", "WiFi: <essid> <quality>%" ] 10
 	       , Run DynNetwork [ "--template", "Net: <dev>" ] 10
 	       , Run BatteryP ["BAT1"] [ "--template", "Batt: <left>%"
 	                               , "--Low", "30"
@@ -23,5 +22,5 @@ Config
                ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = " %StdinReader%}{ WT: %worktimer% : %dynnetwork% : %wlp2s0wi% : %default:Master% : %battery% : %kbd% : %date% "
+  , template = " %StdinReader%}{ WT: %worktimer% : %dynnetwork% : %wlan0wi% : %default:Master% : %battery% : %kbd% : %date% "
   }
