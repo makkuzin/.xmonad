@@ -12,10 +12,8 @@ import Graphics.X11.ExtraTypes.XF86
 myTerminal = "urxvtc"
 myBorderWidth = 3
 myBorderColor = "#4d4d4d"
---myBorderColor = "#8f8f8f"
---myActiveBorderColor = "#dfaf8f"
 myActiveBorderColor = "#806dbd"
-myWorkspaces = ["1:main","2:additional","3:ssh","4:browser","5:calibre","6:communication"]
+myWorkspaces = ["1:code","2:service","3:ssh","4:browser","5:read","6:communication", "7:extra1", "8:extra2", "9:extra3"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
     tiled = spacing 2 $ Tall nmaster delta ratio
@@ -26,8 +24,8 @@ myLayout = tiled ||| Mirror tiled ||| Full
 myManageHook = composeAll
   [ className =? "Firefox" --> doShift "4:browser"
   , className =? "Thunderbird" --> doShift "6:communication"
-  , className =? "calibre" --> doShift "5:calibre"
-  , className =? "VirtualBox" --> doShift "5:calibre"
+  , className =? "calibre" --> doShift "5:read"
+  , className =? "VirtualBox" --> doShift "5:read"
   , className =? "Skype" --> doShift "6:communication"
   , className =? "Upwork" --> doShift "6:communication"
   ]
