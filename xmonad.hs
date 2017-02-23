@@ -13,7 +13,7 @@ myTerminal = "urxvtc"
 myBorderWidth = 3
 myBorderColor = "#4d4d4d"
 myActiveBorderColor = "#806dbd"
-myWorkspaces = ["1:code","2:service","3:ssh","4:browser","5:read","6:communication", "7:extra1", "8:extra2", "9:extra3"]
+myWorkspaces = ["1:code","2:service","3:ssh","4:browser","5:read","6:communication", "7", "8", "9"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
     tiled = spacing 2 $ Tall nmaster delta ratio
@@ -22,10 +22,16 @@ myLayout = tiled ||| Mirror tiled ||| Full
     delta = 5/100
     noBordersLayout = smartBorders $ Full
 myManageHook = composeAll
+-- xprop to determine app's name
   [ className =? "Firefox" --> doShift "4:browser"
+  , className =? "Google-chrome" --> doShift "4:browser"
+  , className =? "Midori" --> doShift "4:browser"
+  , className =? "Opera" --> doShift "4:browser"
+  , className =? "QupZilla" --> doShift "4:browser"
+  , className =? "Vivaldi-stable" --> doShift "4:browser"
   , className =? "Thunderbird" --> doShift "6:communication"
   , className =? "calibre" --> doShift "5:read"
-  , className =? "VirtualBox" --> doShift "5:read"
+  , className =? "VirtualBox" --> doShift "7"
   , className =? "Skype" --> doShift "6:communication"
   , className =? "Upwork" --> doShift "6:communication"
   ]
