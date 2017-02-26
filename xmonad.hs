@@ -88,4 +88,7 @@ main = do
     -- clicks
     , ((mod4Mask, xK_Return), spawn "xdotool click 1") -- left click
     , ((mod4Mask, xK_backslash), spawn "xdotool click 3") -- right click
+    -- scroll
+    , ((mod4Mask, xK_bracketleft), spawn "xdotool click 5") -- down
+    , ((mod4Mask, xK_bracketright), spawn "xdotool click 4") -- up
     ]
