@@ -20,7 +20,7 @@ myWorkspaces = [ "1:code"
                , "5:chat"
                , "6:email"
                , "7:read"
-               , "8", "9"]
+               , "8", "9", "0"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
     tiled = spacing 2 $ Tall nmaster delta ratio
@@ -76,15 +76,15 @@ main = do
     , ((mod1Mask, xK_F4), kill)
     -- mouse
     -- quick
-    , ((mod4Mask .|. shiftMask, xK_j), spawn "xdotool mousemove_relative 0 40") -- down
-    , ((mod4Mask .|. shiftMask, xK_k), spawn "xdotool mousemove_relative 0 -40") -- up
-    , ((mod4Mask .|. shiftMask, xK_h), spawn "xdotool mousemove_relative -- -40 0") -- left
-    , ((mod4Mask .|. shiftMask, xK_l), spawn "xdotool mousemove_relative 40 0") -- right
+    , ((mod4Mask, xK_j), spawn "xdotool mousemove_relative 0 40") -- down
+    , ((mod4Mask, xK_k), spawn "xdotool mousemove_relative 0 -40") -- up
+    , ((mod4Mask, xK_h), spawn "xdotool mousemove_relative -- -40 0") -- left
+    , ((mod4Mask, xK_l), spawn "xdotool mousemove_relative 40 0") -- right
     -- slow
-    , ((mod4Mask, xK_j), spawn "xdotool mousemove_relative 0 10") -- down
-    , ((mod4Mask, xK_k), spawn "xdotool mousemove_relative 0 -10") -- up
-    , ((mod4Mask, xK_h), spawn "xdotool mousemove_relative -- -10 0") -- left
-    , ((mod4Mask, xK_l), spawn "xdotool mousemove_relative 10 0") -- right
+    , ((mod4Mask .|. shiftMask, xK_j), spawn "xdotool mousemove_relative 0 10") -- down
+    , ((mod4Mask .|. shiftMask, xK_k), spawn "xdotool mousemove_relative 0 -10") -- up
+    , ((mod4Mask .|. shiftMask, xK_h), spawn "xdotool mousemove_relative -- -10 0") -- left
+    , ((mod4Mask .|. shiftMask, xK_l), spawn "xdotool mousemove_relative 10 0") -- right
     -- clicks
     , ((mod4Mask, xK_Return), spawn "xdotool click 1") -- left click
     , ((mod4Mask, xK_backslash), spawn "xdotool click 3") -- right click
