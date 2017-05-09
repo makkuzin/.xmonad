@@ -10,9 +10,10 @@ import XMonad.Util.EZConfig
 import Graphics.X11.ExtraTypes.XF86
 
 myTerminal = "urxvtc"
-myBorderWidth = 3
+myBorderWidth = 2
 myBorderColor = "#4d4d4d"
-myActiveBorderColor = "#806dbd"
+--myActiveBorderColor = "#806dbd"
+myActiveBorderColor = "orange"
 myWorkspaces = [ "1:code"
                , "2:service"
                , "3:ssh"
@@ -23,7 +24,7 @@ myWorkspaces = [ "1:code"
                , "8", "9", "0"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
-    tiled = spacing 2 $ Tall nmaster delta ratio
+    tiled = spacing 4 $ Tall nmaster delta ratio
     nmaster = 1
     ratio = 1/2
     delta = 5/100
