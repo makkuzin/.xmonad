@@ -10,12 +10,12 @@ Config
 	       , Run DynNetwork [ "--template", "Net: <dev>" ] 10
 	       , Run BatteryP ["BAT1"] [ "--template", "Batt: <left>%"
 	                               , "--Low", "30"
-				       , "--High", "80"
+				       , "--High", "50"
 				       , "--low", "red"
 				       , "--normal", "darkorange"
 				       , "--high", "darkgreen"
 				       ] 50
-               , Run Date "<fc=#ee9a00>%H:%M</fc>" "date" 10
+               , Run Date "<fc=#ee9a00>%H:%M %d/%m</fc>" "date" 10
 	       , Run Volume "default" "Master" [ "--template", "Vol: <volumebar>" ] 10
 	       , Run PipeReader "/tmp/.worktimer-pipe" "worktimer"
                , Run StdinReader

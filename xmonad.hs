@@ -24,7 +24,7 @@ myWorkspaces = [ "1:code"
                , "8", "9", "0"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
-    tiled = spacing 4 $ Tall nmaster delta ratio
+    tiled = spacing 2 $ Tall nmaster delta ratio
     nmaster = 1
     ratio = 1/2
     delta = 5/100
