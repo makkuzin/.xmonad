@@ -1,0 +1,13 @@
+1. Install:
+  emerge xscreensaver rxvt-unicode feh liberation-fonts alsa-mixer dmenu xdotool scrot
+
+2. Copy files:
+  .xinitrc -> ~/.xinitrc
+  .Xresources -> ~/.Xresources
+  xmonad.hs.example -> xmonad.hs
+  xmobar.hs.example -> xmobar.hs
+
+3. Change xmonad.hs and xmobar.hs
+
+4. Compile:
+  xmonad --recompile && xmonad --restart
