@@ -1,0 +1,103 @@
+URxvt*font:           xft:Liberation Mono:size=11
+!URxvt*font:           xft:Monospace:size=11
+!URxvt*font:           xft:DejaVu Sans Mono:size=11
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+!Xft.hintstyle: hintslight
+Xft.hintstyle: hintmedium
+Xft.autohint: false
+Xft.lcdfilter: lcddefault
+
+!URxvt.letterSpace: -2
+URxvt.letterSpace: -1
+URxvt.scrollBar: false
+!URxvt.shading: 25
+!URxvt.inheritPixmap: true
+
+! Colors !
+URxvt*background: #2c2c2c
+URxvt*foreground: #dcdcdc
+! black
+!URxvt*color0:  #3f3f3f
+!URxvt*color8:  #709080
+URxvt*color0:  #2E3436
+URxvt*color8:  #555753
+! red
+!URxvt*color1:  #705050
+!URxvt*color9:  #dca3a3
+URxvt*color1:  #a40000
+URxvt*color9:  #EF2929
+! green
+!URxvt*color2:  #60b48a
+!URxvt*color10: #72d5a3
+URxvt*color2:  #4E9A06
+URxvt*color10: #8AE234
+! yellow
+!URxvt*color3:  #dfaf8f
+!URxvt*color11: #f0dfaf
+URxvt*color3:  #C4A000
+URxvt*color11: #FCE94F
+! blue
+!URxvt*color4:  #9ab8d7
+!URxvt*color12: #94bff3
+URxvt*color4:  #3465A4
+URxvt*color12: #729FCF
+! purple
+!URxvt*color5:  #dc8cc3
+!URxvt*color13: #ec93d3
+URxvt*color5:  #75507B
+URxvt*color13: #AD7FA8
+! cyan (orange in tango)
+!URxvt*color6:  #8cd0d3
+!URxvt*color14: #93e0e3
+URxvt*color6:  #ce5c00
+URxvt*color14: #fcaf3e
+! white
+!URxvt*color7:  #dcdcdc
+!URxvt*color15: #ffffff
+URxvt*color7:  #babdb9
+URxvt*color15: #EEEEEC
+
+! Perl extensions !
+URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.underlineURLs: True
+URxvt.matcher.button: 1
+URxvt.keysym.R-Escape:perl:keyboard-select:activate
+URxvt.keysym.Control-v: perl:pasta:paste
+URxvt.clipboard.autocopy: true
+
+xscreensaver.splash: false
+xscreensaver.Dialog.headingFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont: -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.passwdFont: -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+
+xscreensaver.Dialog.foreground: #ffffff
+xscreensaver.Dialog.background: #111111
+xscreensaver.Dialog.topShadowColor: #111111
+xscreensaver.Dialog.bottomShadowColor: #111111
+xscreensaver.Dialog.Button.foreground: #666666
+xscreensaver.Dialog.Button.background: #ffffff
+
+xscreensaver.Dialog.text.foreground: #666666
+xscreensaver.Dialog.text.background: #ffffff
+xscreensaver.Dialog.internalBorderWidth: 24
+xscreensaver.Dialog.borderWidth: 20
+xscreensaver.Dialog.shadowThickness: 2
+
+xscreensaver.passwd.thermometer.foreground: #ff0000
+xscreensaver.passwd.thermometer.background: #000000
+xscreensaver.passwd.thermometer.width: 8
+
+xscreensaver.dateFormat: %I:%M%P %a %d %b, %Y
+
+Xcursor.theme: Adwaita
+Xcursor.size: 16
