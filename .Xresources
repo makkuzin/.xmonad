@@ -67,7 +67,7 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.underlineURLs: True
 URxvt.matcher.button: 1
-URxvt.keysym.R-Escape:perl:keyboard-select:activate
+URxvt.keysym.R-Escape: perl:keyboard-select:activate
 URxvt.keysym.Control-v: perl:pasta:paste
 URxvt.clipboard.autocopy: true
 

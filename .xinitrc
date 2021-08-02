@@ -4,7 +4,7 @@ xbacklight -set 40
 xsetroot -cursor_name left_ptr &
 xscreensaver -no-splash &
 urxvtd --quiet --opendisplay --fork
-feh --bg-center ~/.backgrounds/kite.jpg
+feh --bg-center ~/.background
 
 export DESKTOP_SESSION=xmonad
 export WT=/tmp/.worktimer-pipe

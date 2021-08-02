@@ -1,13 +1,16 @@
-1. Install:
-  emerge xscreensaver rxvt-unicode feh liberation-fonts alsa-mixer dmenu xdotool scrot
+1. Add xft into USE.
 
-2. Copy files:
+2. Install:
+  emerge xscreensaver rxvt-unicode feh liberation-fonts alsa-utils dmenu xdotool scrot urxvt-perls
+
+3. Copy files:
   .xinitrc -> ~/.xinitrc
   .Xresources -> ~/.Xresources
   xmonad.hs.example -> xmonad.hs
   xmobar.hs.example -> xmobar.hs
+  pasta -> /usr/lib64/urxvt/perl/pasta
 
-3. Change xmonad.hs and xmobar.hs
+4. Change xmonad.hs and xmobar.hs
 
-4. Compile:
+5. Compile:
   xmonad --recompile && xmonad --restart
