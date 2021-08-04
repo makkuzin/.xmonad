@@ -1,23 +1,58 @@
-Config
-  { font = "xft:Liberation Mono:size=11:bold:antialias=true"
-  , bgColor = "black"
-  , fgColor = "#dcdcdc"
-  , position = Static { xpos = 0, ypos = 0, width = 1920, height = 16 }
-  , commands = [Run StdinReader
-	       , Run PipeReader "/tmp/.worktimer-pipe" "worktimer"
-	       , Run Wireless "wlp2s0" [ "--template", "WiFi: <fc=#806dbd><essid> <quality>%</fc>" ] 10
-	       , Run Volume "default" "Master" [ "--template", "Vol: <volumebar>" ] 10
-	       , Run BatteryP ["BAT1"] [ "--template", "<left>%"
-                       , "--Low", "30"
-				       , "--High", "50"
-				       , "--low", "red"
-				       , "--normal", "darkorange"
-				       , "--high", "darkgreen"
-				       ] 50
-           , Run Kbd [("us", "us"), ("ru", "ru")]
-           , Run Date "<fc=#ee9a00>%H:%M %d/%m</fc>" "date" 10
-           ]
-  , sepChar = "%"
-  , alignSep = "}{"
-  , template = " %StdinReader%}{ WT: %worktimer% : %dynnetwork% : %wlp2s0wi% : %default:Master% : %battery% : %kbd% : %date% "
-  }
+-- https://xmobar.org
+Config {
+    font = "xft:Liberation Mono:size=11:bold:antialias=true",
+    bgColor = "black",
+    fgColor = "#dcdcdc",
+    position = Static { xpos = 0, ypos = 0, width = 2560, height = 16 },
+    commands = [
+        Run StdinReader,
+        Run PipeReader "/tmp/.worktimer-pipe" "worktimer",
+        Run Memory [
+            "--template", "mem: <free>M"
+        ] 50,
+        Run Swap [
+            "--template", "sw: <free>M"
+        ] 50,
+        Run Cpu [
+            "--template", "cpu: <bar>"
+        ] 10,
+        Run MultiCoreTemp [
+            "--template", "<max>°C",
+            "--Low", "30",
+            "--High", "65",
+            "--low", "darkgreen",
+            "--normal", "darkorange",
+            "--high", "red"
+        ] 10,
+        Run Wireless "wlp2s0" [
+            "--template", "<fc=#806dbd><essid> <quality>%</fc>"
+        ] 50,
+        Run Volume "default" "Master" [
+            "--template", "<status> <volumebar>", "--",
+            "--on", "vol",
+            "--off", "vol",
+            "--onc", "#dcdcdc",
+            "--offc", "#6d6d6d"
+        ] 10,
+        Run Volume "default" "Capture" [
+            "--template", "<status> <volume>%", "--",
+            "--on", "mic",
+            "--off", "mic",
+            "--onc", "#dcdcdc",
+            "--offc", "#6d6d6d"
+        ] 10,
+        Run BatteryP ["BAT1"] [
+            "--template", "<left>%",
+            "--Low", "30",
+            "--High", "50",
+            "--low", "red",
+            "--normal", "darkorange",
+            "--high", "darkgreen"
+        ] 100,
+        Run Kbd [("us", "us"), ("ru", "ru")],
+        Run Date "<fc=#ee9a00>%H:%M %d/%m</fc>" "date" 10
+    ],
+    sepChar = "%",
+    alignSep = "}{",
+    template = " %StdinReader%}{ %worktimer% : %memory% : %swap% : %cpu% (%multicoretemp%) : %wlp2s0wi% : %default:Master% : %default:Capture% : %battery% : %kbd% : %date% "
+}

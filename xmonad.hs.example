@@ -1,4 +1,3 @@
--- https://habr.com/ru/post/242351/
 import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
@@ -14,16 +13,8 @@ import XMonad.Hooks.EwmhDesktops
 myTerminal = "urxvtc"
 myBorderWidth = 1
 myBorderColor = "#4d4d4d"
---myActiveBorderColor = "#806dbd"
-myActiveBorderColor = "orange"
-myWorkspaces = [ "1:code"
-               , "2:service"
-               , "3:ssh"
-               , "4:browser"
-               , "5:chat"
-               , "6:email"
-               , "7:read"
-               , "8", "9", "0"]
+myActiveBorderColor = "#dcdcdc"
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 myLayout = tiled ||| Mirror tiled ||| Full
   where
     -- Border (Top Bottom Right Left)
@@ -34,67 +25,73 @@ myLayout = tiled ||| Mirror tiled ||| Full
     noBordersLayout = smartBorders $ Full
 myManageHook = composeAll
 -- xprop to determine the app's name
-  [ className =? "Firefox" --> doShift "4:browser"
-  , className =? "Google-chrome" --> doShift "4:browser"
-  , className =? "Midori" --> doShift "4:browser"
-  , className =? "Opera" --> doShift "4:browser"
-  , className =? "QupZilla" --> doShift "4:browser"
-  , className =? "Vivaldi-stable" --> doShift "4:browser"
-  , className =? "Skype" --> doShift "5:chat"
-  , className =? "Upwork" --> doShift "5:chat"
-  , className =? "Thunderbird" --> doShift "6:email"
-  , className =? "calibre" --> doShift "7:read"
-  , className =? "VirtualBox" --> doShift "8"
+  [
+    className =? "Firefox" --> doShift "4",
+    className =? "Google-chrome" --> doShift "5",
+    className =? "Midori" --> doShift "5",
+    className =? "Opera" --> doShift "5",
+    className =? "QupZilla" --> doShift "5",
+    className =? "Vivaldi-stable" --> doShift "5",
+    className =? "TelegramDesktop" --> doShift "6",
+    className =? "Skype" --> doShift "6",
+    className =? "calibre" --> doShift "7"
   ]
 
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar /home/gentoo/.xmonad/xmobar.hs"
+  xmproc <- spawnPipe "/usr/bin/xmobar /home/makkuzin/.xmonad/xmobar.hs"
   xmonad $ def
-    { layoutHook = avoidStruts $ myLayout
-    , manageHook = manageDocks <+> myManageHook <+> manageHook def
-    , logHook = dynamicLogWithPP xmobarPP
-      { ppOutput = hPutStrLn xmproc
-      , ppTitle = xmobarColor "#6d6d6d" "" . shorten 50
-      , ppCurrent = xmobarColor "#dcdcdc" "" . wrap "[" "]"
-      , ppLayout = const ""
-      }
-    , workspaces = myWorkspaces
-    , terminal = myTerminal
-    , borderWidth = myBorderWidth
-    , normalBorderColor = myBorderColor
-    , focusedBorderColor = myActiveBorderColor
+    {
+      layoutHook = avoidStruts $ myLayout,
+      manageHook = manageDocks <+> myManageHook <+> manageHook def,
+      handleEventHook = fullscreenEventHook,
+      logHook = dynamicLogWithPP xmobarPP
+      {
+        ppOutput = hPutStrLn xmproc,
+        ppTitle = xmobarColor "#6d6d6d" "" . shorten 80,
+        ppCurrent = xmobarColor "#dcdcdc" "" . wrap "[" "]",
+        ppLayout = const ""
+      },
+      workspaces = myWorkspaces,
+      terminal = myTerminal,
+      borderWidth = myBorderWidth,
+      normalBorderColor = myBorderColor,
+      focusedBorderColor = myActiveBorderColor
     } `additionalKeys`
     -- mod1Mask - altKey, mod4Mask - winKey
     -- http://hackage.haskell.org/package/X11-1.8/docs/Graphics-X11-Types.html
     -- http://hackage.haskell.org/package/X11-1.8/docs/Graphics-X11-ExtraTypes-XF86.html
-    [ ((mod1Mask .|. controlMask, xK_l), spawn "xscreensaver-command -lock")
-    , ((controlMask, xK_Print), spawn "scrot -u")
-    , ((0, xK_Print), spawn "scrot")
-    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -10")
-    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
-    , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-")
-    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+")
-    , ((0, xF86XK_PowerOff), spawn "xscreensaver-command -lock && acpitool -s")
-    , ((mod1Mask .|. shiftMask, xK_q), return())
-    , ((mod1Mask, xK_q), return())
-    , ((mod1Mask, xK_F1), sendMessage ToggleStruts)
-    , ((mod1Mask, xK_F2), spawn "dmenu_run")
-    , ((mod1Mask, xK_F4), kill)
+    [
+      ((mod1Mask .|. controlMask, xK_l), spawn "mate-screensaver-command -l"),
+      ((controlMask, xK_Print), spawn "scrot -u"),
+      ((0, xK_Print), spawn "scrot"),
+      ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-"),
+      ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+"),
+      ((0, xF86XK_AudioMute), spawn "amixer set Master toggle"),
+      ((0, xF86XK_AudioPrev), spawn "amixer set Capture 10%-"),
+      ((0, xF86XK_AudioPlay), spawn "amixer set Capture 10%+"),
+      ((0, xF86XK_AudioNext), spawn "amixer set Capture toggle"),
+    --((0, xK_Pause), spawn "mate-screensaver-command -l && acpitool -s"),
+      ((0, xK_Pause), spawn "mate-screensaver-command -l"),
+      ((mod1Mask .|. shiftMask, xK_q), return()),
+      ((mod1Mask, xK_q), return()),
+      ((mod1Mask, xK_F1), sendMessage ToggleStruts),
+      ((mod1Mask, xK_F2), spawn "dmenu_run"),
+      ((mod1Mask, xK_F4), kill),
     -- mouse
     -- quick
-    , ((mod4Mask, xK_j), spawn "xdotool mousemove_relative 0 40") -- down
-    , ((mod4Mask, xK_k), spawn "xdotool mousemove_relative 0 -40") -- up
-    , ((mod4Mask, xK_h), spawn "xdotool mousemove_relative -- -40 0") -- left
-    , ((mod4Mask, xK_l), spawn "xdotool mousemove_relative 40 0") -- right
+      ((mod4Mask, xK_j), spawn "xdotool mousemove_relative 0 40"), -- down
+      ((mod4Mask, xK_k), spawn "xdotool mousemove_relative 0 -40"), -- up
+      ((mod4Mask, xK_h), spawn "xdotool mousemove_relative -- -40 0"), -- left
+      ((mod4Mask, xK_l), spawn "xdotool mousemove_relative 40 0"), -- right
     -- slow
-    , ((mod4Mask .|. shiftMask, xK_j), spawn "xdotool mousemove_relative 0 10") -- down
-    , ((mod4Mask .|. shiftMask, xK_k), spawn "xdotool mousemove_relative 0 -10") -- up
-    , ((mod4Mask .|. shiftMask, xK_h), spawn "xdotool mousemove_relative -- -10 0") -- left
-    , ((mod4Mask .|. shiftMask, xK_l), spawn "xdotool mousemove_relative 10 0") -- right
+      ((mod4Mask .|. shiftMask, xK_j), spawn "xdotool mousemove_relative 0 10"), -- down
+      ((mod4Mask .|. shiftMask, xK_k), spawn "xdotool mousemove_relative 0 -10"), -- up
+      ((mod4Mask .|. shiftMask, xK_h), spawn "xdotool mousemove_relative -- -10 0"), -- left
+      ((mod4Mask .|. shiftMask, xK_l), spawn "xdotool mousemove_relative 10 0"), -- right
     -- clicks
-    , ((mod4Mask, xK_Return), spawn "xdotool click 1") -- left click
-    , ((mod4Mask, xK_backslash), spawn "xdotool click 3") -- right click
+      ((mod4Mask, xK_Return), spawn "xdotool click 1"), -- left click
+      ((mod4Mask, xK_backslash), spawn "xdotool click 3"), -- right click
     -- scroll
-    , ((mod4Mask, xK_bracketleft), spawn "xdotool click 5") -- down
-    , ((mod4Mask, xK_bracketright), spawn "xdotool click 4") -- up
+      ((mod4Mask, xK_bracketleft), spawn "xdotool click 5"), -- down
+      ((mod4Mask, xK_bracketright), spawn "xdotool click 4") -- up
     ]
