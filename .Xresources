@@ -1,6 +1,4 @@
-URxvt*font:           xft:Liberation Mono:size=11
-!URxvt*font:           xft:Monospace:size=11
-!URxvt*font:           xft:DejaVu Sans Mono:size=11
+URxvt*font: xft:Liberation Mono:size=11, xft:Monospace:size=11, xft:DejaVu Sans Mono:size=11
 
 Xft.dpi: 96
 Xft.antialias: true
@@ -18,48 +16,33 @@ URxvt.scrollBar: false
 !URxvt.inheritPixmap: true
 
 ! Colors !
+! https://colorscheme.ru/color-names.html
 URxvt*background: #2c2c2c
 URxvt*foreground: #dcdcdc
 ! black
-!URxvt*color0:  #3f3f3f
-!URxvt*color8:  #709080
-URxvt*color0:  #2E3436
-URxvt*color8:  #555753
+URxvt*color0:   #2E3436
+URxvt*color8:   #555753
 ! red
-!URxvt*color1:  #705050
-!URxvt*color9:  #dca3a3
-URxvt*color1:  #a40000
-URxvt*color9:  #EF2929
+URxvt*color1:   #FF2B2B
+URxvt*color9:   #FF4040
 ! green
-!URxvt*color2:  #60b48a
-!URxvt*color10: #72d5a3
-URxvt*color2:  #4E9A06
-URxvt*color10: #8AE234
+URxvt*color2:   #138808
+URxvt*color10:  #5DA130
 ! yellow
-!URxvt*color3:  #dfaf8f
-!URxvt*color11: #f0dfaf
-URxvt*color3:  #C4A000
-URxvt*color11: #FCE94F
+URxvt*color3:   #FFCC00
+URxvt*color11:  #CFB53B
 ! blue
-!URxvt*color4:  #9ab8d7
-!URxvt*color12: #94bff3
-URxvt*color4:  #3465A4
-URxvt*color12: #729FCF
+URxvt*color4:   #4682B4
+URxvt*color12:  #6699CC
 ! purple
-!URxvt*color5:  #dc8cc3
-!URxvt*color13: #ec93d3
-URxvt*color5:  #75507B
-URxvt*color13: #AD7FA8
-! cyan (orange in tango)
-!URxvt*color6:  #8cd0d3
-!URxvt*color14: #93e0e3
-URxvt*color6:  #ce5c00
-URxvt*color14: #fcaf3e
+URxvt*color5:   #806dbd
+URxvt*color13:  #9370D8
+! cyan
+URxvt*color6:   #1FAEE9
+URxvt*color14:  #87CEFA
 ! white
-!URxvt*color7:  #dcdcdc
-!URxvt*color15: #ffffff
-URxvt*color7:  #babdb9
-URxvt*color15: #EEEEEC
+URxvt*color7:   #FFFFFF
+URxvt*color15:  #D7D7D7
 
 ! Perl extensions !
 URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
