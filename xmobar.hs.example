@@ -8,19 +8,19 @@ Config {
         Run StdinReader,
         Run PipeReader "/tmp/.worktimer-pipe" "worktimer",
         Run Memory [
-            "--template", "mem: <free>M"
+            "--template", "<fc=#6699cc>mem <free>M /</fc>"
         ] 50,
         Run Swap [
-            "--template", "sw: <free>M"
+            "--template", "<fc=#6699cc><free>M</fc>"
         ] 50,
         Run Cpu [
-            "--template", "cpu: <bar>"
+            "--template", "<fc=#6699cc>cpu <bar></fc>"
         ] 10,
         Run MultiCoreTemp [
-            "--template", "<max>°C",
+            "--template", "<fc=#6699cc>(</fc><max><fc=darkorange>°C</fc><fc=#6699cc>)</fc>",
             "--Low", "30",
-            "--High", "65",
-            "--low", "darkgreen",
+            "--High", "70",
+            "--low", "#6699cc",
             "--normal", "darkorange",
             "--high", "red"
         ] 10,
@@ -28,21 +28,21 @@ Config {
             "--template", "<fc=#806dbd><essid> <quality>%</fc>"
         ] 50,
         Run Volume "default" "Master" [
-            "--template", "<status> <volumebar>", "--",
+            "--template", "<status> <fc=#5da130><volumebar></fc>", "--",
             "--on", "vol",
             "--off", "vol",
-            "--onc", "#dcdcdc",
+            "--onc", "#5da130",
             "--offc", "#6d6d6d"
         ] 10,
         Run Volume "default" "Capture" [
-            "--template", "<status> <volume>%", "--",
+            "--template", "<status> <fc=#cfb53b><volume>%</fc>", "--",
             "--on", "mic",
             "--off", "mic",
-            "--onc", "#dcdcdc",
+            "--onc", "#cfb53b",
             "--offc", "#6d6d6d"
         ] 10,
         Run BatteryP ["BAT1"] [
-            "--template", "<left>%",
+            "--template", "<left><fc=darkgreen>%</fc>",
             "--Low", "30",
             "--High", "50",
             "--low", "red",
@@ -50,9 +50,9 @@ Config {
             "--high", "darkgreen"
         ] 100,
         Run Kbd [("us", "us"), ("ru", "ru")],
-        Run Date "<fc=#ee9a00>%H:%M %d/%m</fc>" "date" 10
+        Run Date "<fc=#ee9a00>%a %d %b %H:%M</fc>" "date" 10
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = " %StdinReader%}{ %worktimer% : %memory% : %swap% : %cpu% (%multicoretemp%) : %wlp2s0wi% : %default:Master% : %default:Capture% : %battery% : %kbd% : %date% "
+    template = " %StdinReader%}{ %worktimer% : %memory% %swap% : %cpu% %multicoretemp% : %wlp2s0wi% : %default:Master% : %default:Capture% : %battery% : %kbd% : %date% "
 }

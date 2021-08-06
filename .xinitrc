@@ -2,7 +2,7 @@ xrdb -merge ~/.Xresources
 xset r rate 300 30
 xbacklight -set 40
 xsetroot -cursor_name left_ptr &
-xscreensaver -no-splash &
+xfce4-screensaver &
 urxvtd --quiet --opendisplay --fork
 feh --bg-center ~/.background
 

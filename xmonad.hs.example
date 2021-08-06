@@ -61,7 +61,7 @@ main = do
     -- http://hackage.haskell.org/package/X11-1.8/docs/Graphics-X11-Types.html
     -- http://hackage.haskell.org/package/X11-1.8/docs/Graphics-X11-ExtraTypes-XF86.html
     [
-      ((mod1Mask .|. controlMask, xK_l), spawn "mate-screensaver-command -l"),
+      ((mod1Mask .|. controlMask, xK_l), spawn "xfce4-screensaver-command -l"),
       ((controlMask, xK_Print), spawn "scrot -u"),
       ((0, xK_Print), spawn "scrot"),
       ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-"),
@@ -70,8 +70,8 @@ main = do
       ((0, xF86XK_AudioPrev), spawn "amixer set Capture 10%-"),
       ((0, xF86XK_AudioPlay), spawn "amixer set Capture 10%+"),
       ((0, xF86XK_AudioNext), spawn "amixer set Capture toggle"),
-    --((0, xK_Pause), spawn "mate-screensaver-command -l && acpitool -s"),
-      ((0, xK_Pause), spawn "mate-screensaver-command -l"),
+    --((0, xK_Pause), spawn "xfce4-screensaver-command -l && acpitool -s"),
+      ((0, xK_Pause), spawn "xfce4-screensaver-command -l"),
       ((mod1Mask .|. shiftMask, xK_q), return()),
       ((mod1Mask, xK_q), return()),
       ((mod1Mask, xK_F1), sendMessage ToggleStruts),
