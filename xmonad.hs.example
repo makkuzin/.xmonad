@@ -28,9 +28,7 @@ myManageHook = composeAll
   [
     className =? "Firefox" --> doShift "4",
     className =? "Google-chrome" --> doShift "5",
-    className =? "Midori" --> doShift "5",
     className =? "Opera" --> doShift "5",
-    className =? "QupZilla" --> doShift "5",
     className =? "Vivaldi-stable" --> doShift "5",
     className =? "TelegramDesktop" --> doShift "6",
     className =? "Skype" --> doShift "6",
@@ -47,7 +45,7 @@ main = do
       logHook = dynamicLogWithPP xmobarPP
       {
         ppOutput = hPutStrLn xmproc,
-        ppTitle = xmobarColor "#6d6d6d" "" . shorten 80,
+        ppTitle = xmobarColor "#6d6d6d" "" . shorten 50,
         ppCurrent = xmobarColor "#dcdcdc" "" . wrap "[" "]",
         ppLayout = const ""
       },
@@ -70,7 +68,7 @@ main = do
       ((0, xF86XK_AudioPrev), spawn "amixer set Capture 10%-"),
       ((0, xF86XK_AudioPlay), spawn "amixer set Capture 10%+"),
       ((0, xF86XK_AudioNext), spawn "amixer set Capture toggle"),
-    --((0, xK_Pause), spawn "xfce4-screensaver-command -l && acpitool -s"),
+      ((0, xF86XK_AudioStop), spawn "soundcardchange"),
       ((0, xK_Pause), spawn "xfce4-screensaver-command -l"),
       ((mod1Mask .|. shiftMask, xK_q), return()),
       ((mod1Mask, xK_q), return()),

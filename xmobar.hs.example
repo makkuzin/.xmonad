@@ -6,7 +6,8 @@ Config {
     position = Static { xpos = 0, ypos = 0, width = 2560, height = 16 },
     commands = [
         Run StdinReader,
-        Run PipeReader "/tmp/.worktimer-pipe" "worktimer",
+        Run PipeReader "/tmp/worktimer-pipe" "wt",
+        Run PipeReader "/tmp/soundcardstatus-pipe" "scs",
         Run Memory [
             "--template", "<fc=#6699cc>mem <free>M /</fc>"
         ] 50,
@@ -54,5 +55,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = " %StdinReader%}{ %worktimer% : %memory% %swap% : %cpu% %multicoretemp% : %wlp2s0wi% : %default:Master% : %default:Capture% : %battery% : %kbd% : %date% "
+    template = " %StdinReader%}{ %wt% : %memory% %swap% : %cpu% %multicoretemp% : %wlp2s0wi% : %default:Master% <fc=#5da130>%scs%</fc> : %default:Capture% : %battery% : %kbd% : %date% "
 }

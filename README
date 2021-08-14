@@ -1,7 +1,7 @@
 1. Add xft into USE.
 
 2. Install:
-  emerge xscreensaver rxvt-unicode feh liberation-fonts alsa-utils dmenu xdotool scrot urxvt-perls
+  emerge xfce4-screensaver xfce4-power-manager rxvt-unicode feh liberation-fonts dejavu alsa-utils dmenu xdotool scrot urxvt-perls
 
 3. Copy files:
   .xinitrc -> ~/.xinitrc
