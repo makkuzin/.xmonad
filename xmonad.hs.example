@@ -9,15 +9,22 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Util.EZConfig
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Hooks.EwmhDesktops
+-- import XMonad.Layout.MultiColumns
+-- import XMonad.Layout.Grid
 
 myTerminal = "urxvtc"
 myBorderWidth = 1
 myBorderColor = "#4d4d4d"
 myActiveBorderColor = "#dcdcdc"
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-myLayout = tiled ||| Mirror tiled ||| Full
+-- https://betweentwocommits.com/blog/xmonad-layouts-guide
+myLayout = tiled ||| Full
+-- myLayout = tiled ||| Mirror tiled ||| Full
+-- myLayout = tiled ||| multiCol [1] 1 0.01 (-0.5)
+-- myLayout = Grid
   where
     -- Border (Top Bottom Right Left)
+--  tiled = spacingRaw False (Border 16 0 0 0) True (Border 0 0 0 0) True $ Grid
     tiled = spacingRaw False (Border 16 0 0 0) True (Border 0 0 0 0) True $ Tall nmaster delta ratio
     nmaster = 1
     ratio = 1/2
