@@ -17,4 +17,8 @@ export SCS=/tmp/soundcardstatus-pipe
 [[ -S $SCS ]] || mkfifo $SCS
 soundcardstatus > $SCS &
 
+export VPN=/tmp/vpn-pipe
+[[ -S $VPN ]] || mkfifo $VPN
+echo "" > $VPN &
+
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
